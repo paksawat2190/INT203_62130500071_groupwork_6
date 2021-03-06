@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Basic Vue Js - HelloWorld App</title>
+    <!-- https://google.github.io/material-design-icons/#icon-font-for-the-web -->
+    <!-- Using via Google Web Fonts -->
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons"
+      rel="stylesheet" />
+    <!-- https://tailwindcss.com/docs/installation -->
+    <!-- Using Tailwind via CDN -->
+    <link href="https://unpkg.com/tailwindcss@^2/dist/tailwind.min.css"
+      rel="stylesheet" />
+    <!-- https://v3.vuejs.org/guide/installation.html#release-notes -->
+    <!-- Vue CDN -->
+    <script src="https://unpkg.com/vue@next"></script>
+    <script
+      src="//cdnjs.cloudflare.com/ajax/libs/validate.js/0.13.1/validate.min.js"></script>
+  </head>
+  <style>
+body {
+    background-color: #B3E5FC;
+    border-radius: 10px
+}
+
+.card {
+    width: 800px;
+    height: 700px;
+    border: none;
+    border-radius: 10px;
+    background-color: #fff
+}
+
+.stats {
+    background: #f2f5f8 !important;
+    color: #000 !important
+}
+
+.articles {
+    font-size: 10px;
+    color: #a1aab9
+}
+
+.number1 {
+    font-weight: 500
+}
+
+.followers {
+    font-size: 10px;
+    color: #a1aab9
+}
+
+.number2 {
+    font-weight: 500
+}
+
+.rating {
+    font-size: 10px;
+    color: #a1aab9
+}
+
+.number3 {
+    font-weight: 500
+}
+
+
+</style>
+  <body>
+
+    <div id="app" class="container mt-5 flex justify-center">
+      <div class="card p-3 m-16">
+        <!-- Header -->
+        <div class="flex items-center">
+          <div class="image mr-40"> <img src="images/071.JPG" class="rounded"
+              width="140"> </div>
+          <div class="ml-3 w-100">
+            <h1 class="mb-0 mt-0">{{showfullname}}</h1> <span>{{showtitle}}</span>
+          </div>
+        </div>
+        <!-- inputForm -->
+        <div >
+          <form @submit.prevent="checkForm">
+            <div class="ml-5">
+              <h1 class="mt-10 mb-5">Account Form</h1>
+              <p v-if="errors" class="text-red-500">
+                <b>Please correct the following error(s):</b>
+                <ul>
+                   <li v-for="error in errors" class="text-red-500">{{ error }}</li> 
+                </ul>
+            </p>
+              <div>
+                <div class="flex flex-row justify-between">
+                  <label for="firstname">First Name</label>
+                  <input class="bg-gray-100 rounded px-4 py-2 mb-4 w-96" type="text"
+                    id="firstname" v-model="firstname" placeholder="Edit your First Name"
+                    name="firstname">
+                </div>
+                <div class="flex flex-row justify-between">
+                  <label for="email">Email</label>
+                  <input class="bg-gray-100 rounded px-4 py-2 mb-4 w-96" type="text"
+                    id="email" v-model="email" placeholder="Edit your email"
+                    name="email">
+                </div>
+                <div class="flex flex-row justify-between">
+                  <label for="password">Password</label>
+                  <input class="bg-gray-100 rounded px-4 py-2 mb-4 w-96"
+                    type="password" id="password" v-model="password"
+                    placeholder="Edit your password"
+                    name="password">
+                </div>
+                <div class="flex flex-row justify-between">
+                  <label for="fullname">Full Name</label>
+                  <input class="bg-gray-100 rounded px-4 py-2 mb-4 w-96" type="text"
+                    id="fullname" v-model="fullname" placeholder="Edit your Full Name"
+                    name="fullname">
+                </div>
+                <div class="flex flex-row justify-between">
+                  <label for="Title">Title</label>
+                  <input class="bg-gray-100 rounded px-4 py-2 mb-4 w-96" type="text"
+                    id="title" v-model.lazy="title" placeholder="Edit your title"
+                    name="title">
+                </div>
+                <div class="flex flex-row justify-between">
+                  <label for="language">Language</label>
+                  <select id="chosenlanguage" v-model="chosensubject" name="chosenlanguage" class="bg-gray-100 rounded px-4 py-2 mb-4 w-96">
+                    <option v-for="language in language_lists"  :value="language.language_id">
+                        {{language.language_name}}
+                    </option>
+                  </select>
+                </div>
+
+                <div class="mt-10">
+                  <input type="submit" value="Submit" class="px-8 py-2
+                    text-white bg-green-500 rounded-lg hover:bg-green-600
+                    focus:shadow-outline focus:outline-none focus:ring-2
+                    ring-offset-current ring-offset-2">
+                </div>
+              </div>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+
+    <!-- my main.js -->
+    <script src="./profile.js"></script>
+  </body>
+</html>
